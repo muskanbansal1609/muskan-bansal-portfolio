@@ -100,7 +100,7 @@ export const PROFILE: Profile = {
     'Focused on shipping fast, resilient, and inclusive user experiences at scale.',
   github: 'https://github.com/muskanbansal1609',
   linkedin: 'https://www.linkedin.com/in/muskan-bansal16/',
-  portfolioUrl: 'https://muskan-bansal-portfolio.netlify.app/home',
+  portfolioUrl: 'https://muskan-bansal.netlify.app/',
   resumePath: '/Muskan_Bansal_Resume.pdf',
   degree: 'B.Tech in Computer Science & Engineering',
   university: 'PES University - Bangalore',

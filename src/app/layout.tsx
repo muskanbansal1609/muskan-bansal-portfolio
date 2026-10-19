@@ -41,7 +41,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://muskan-bansal-portfolio.netlify.app'),
+  metadataBase: new URL('https://muskan-bansal.netlify.app'),
   title: 'Muskan Bansal — Frontend Engineer',
   description:
     'Frontend Engineer specializing in performance-critical, accessible web apps for fintech platforms. Portfolio of selected works, component architecture, and engineering experience.',
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
     title: 'Muskan Bansal — Frontend Engineer',
     description:
       'Frontend Engineer specializing in performance-critical, accessible web apps for fintech platforms.',
-    url: 'https://muskan-bansal-portfolio.netlify.app',
+    url: 'https://muskan-bansal.netlify.app',
     siteName: 'Muskan Bansal Portfolio',
     images: [
       {
