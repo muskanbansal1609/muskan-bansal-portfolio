@@ -1,0 +1,212 @@
+@import "tailwindcss";
+
+:root {
+  --paper: #f4f2ee;
+  --card: #ffffff;
+  --ink: #0d0d0d;
+  --ink-2: #3a3a3a;
+  --mute: #77756f;
+  --faint: #a9a6a0;
+  --line: rgba(13, 13, 13, 0.1);
+  --soft: #e9e6e0;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --gutter: clamp(18px, 4vw, 64px);
+  --max-width: 1320px;
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    background-color: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
+    scroll-behavior: auto; /* Handled smoothly by Lenis */
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background-color: var(--paper);
+    color: var(--ink);
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    width: 100%;
+    position: relative;
+  }
+
+  ::selection {
+    background: var(--ink);
+    color: var(--paper);
+  }
+
+  a, button {
+    color: inherit;
+    text-decoration: none;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    font: inherit;
+    transition: all 0.35s var(--ease);
+  }
+
+  a:focus-visible,
+  button:focus-visible,
+  [tabindex]:focus-visible {
+    outline: 2px solid var(--ink);
+    outline-offset: 4px;
+    border-radius: 4px;
+  }
+}
+
+@layer components {
+  .section-container {
+    width: 100%;
+    max-width: var(--max-width);
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: var(--gutter);
+    padding-right: var(--gutter);
+  }
+
+  .section-py {
+    padding-top: clamp(96px, 14vh, 160px);
+    padding-bottom: clamp(96px, 14vh, 160px);
+  }
+
+  .section-tag {
+    font-family: var(--font-mono), monospace;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--mute);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .section-heading {
+    font-family: var(--font-inter), sans-serif;
+    font-size: clamp(2.25rem, 5.5vw, 4.25rem);
+    font-weight: 700;
+    line-height: 1.04;
+    letter-spacing: -0.045em;
+    color: var(--ink);
+  }
+
+  .accent-word {
+    font-family: var(--font-serif), serif;
+    font-style: italic;
+    font-weight: 400;
+    color: var(--mute);
+    letter-spacing: -0.01em;
+  }
+
+  /* Card styling */
+  .prem-card {
+    background: var(--card);
+    border-radius: 28px;
+    box-shadow: inset 0 0 0 1px var(--line);
+    transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease);
+  }
+
+  .prem-card:hover {
+    box-shadow: inset 0 0 0 1px rgba(13, 13, 13, 0.15), 0 20px 40px -15px rgba(13, 13, 13, 0.06);
+  }
+
+  /* Buttons */
+  .btn-pill-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.875rem 1.75rem;
+    background: var(--ink);
+    color: #ffffff;
+    border-radius: 9999px;
+    font-weight: 500;
+    font-size: 0.9375rem;
+    border: 1px solid var(--ink);
+    transition: transform 0.25s var(--ease), background 0.25s var(--ease), box-shadow 0.25s var(--ease);
+  }
+
+  .btn-pill-primary:hover {
+    transform: translateY(-2px);
+    background: var(--ink-2);
+    box-shadow: 0 8px 20px -6px rgba(13, 13, 13, 0.25);
+  }
+
+  .btn-pill-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.875rem 1.75rem;
+    background: transparent;
+    color: var(--ink);
+    border-radius: 9999px;
+    font-weight: 500;
+    font-size: 0.9375rem;
+    border: 1px solid var(--line);
+    transition: transform 0.25s var(--ease), background 0.25s var(--ease), border-color 0.25s var(--ease);
+  }
+
+  .btn-pill-secondary:hover {
+    transform: translateY(-2px);
+    background: var(--card);
+    border-color: rgba(13, 13, 13, 0.25);
+  }
+}
+
+/* Reveal-on-scroll animations */
+.rv {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.85s var(--ease), transform 0.85s var(--ease);
+  transition-delay: calc(var(--i, 0) * 80ms);
+  will-change: opacity, transform;
+}
+
+.rv.is-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.rv-mask {
+  overflow: hidden;
+  display: block;
+}
+
+.rv-mask > * {
+  transform: translateY(105%);
+  transition: transform 0.9s var(--ease);
+  transition-delay: calc(var(--i, 0) * 80ms);
+  will-change: transform;
+}
+
+.rv-mask.is-in > * {
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rv {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .rv-mask > * {
+    transform: none !important;
+    transition: none !important;
+  }
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
